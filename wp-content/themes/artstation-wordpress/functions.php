@@ -7,27 +7,28 @@
  *
  * @package ArtStation_Wordpress
  */
-function xcompile_post_type_labels($singular = 'Post', $plural = 'Posts') {
-    $p_lower = strtolower($plural);
-    $s_lower = strtolower($singular);
+function xcompile_post_type_labels($singular = 'Post', $plural = 'Posts')
+{
+	$p_lower = strtolower($plural);
+	$s_lower = strtolower($singular);
 
-    return [
-        'name' => $plural,
-        'singular_name' => $singular,
-        'add_new_item' => "New $singular",
-        'edit_item' => "Edit $singular",
-        'view_item' => "View $singular",
-        'view_items' => "View $plural",
-        'search_items' => "Search $plural",
-        'not_found' => "No $p_lower found",
-        'not_found_in_trash' => "No $p_lower found in trash",
-        'parent_item_colon' => "Parent $singular",
-        'all_items' => "All $plural",
-        'archives' => "$singular Archives",
-        'attributes' => "$singular Attributes",
-        'insert_into_item' => "Insert into $s_lower",
-        'uploaded_to_this_item' => "Uploaded to this $s_lower",
-    ];
+	return [
+		'name' => $plural,
+		'singular_name' => $singular,
+		'add_new_item' => "New $singular",
+		'edit_item' => "Edit $singular",
+		'view_item' => "View $singular",
+		'view_items' => "View $plural",
+		'search_items' => "Search $plural",
+		'not_found' => "No $p_lower found",
+		'not_found_in_trash' => "No $p_lower found in trash",
+		'parent_item_colon' => "Parent $singular",
+		'all_items' => "All $plural",
+		'archives' => "$singular Archives",
+		'attributes' => "$singular Attributes",
+		'insert_into_item' => "Insert into $s_lower",
+		'uploaded_to_this_item' => "Uploaded to this $s_lower",
+	];
 }
 
 if (!function_exists('artstation_wordpress_setup')) :
@@ -40,18 +41,63 @@ if (!function_exists('artstation_wordpress_setup')) :
 	 */
 	function artstation_wordpress_setup()
 	{
-		add_action( 'init', function() {
+		add_theme_support('post-thumbnails');
+
+		add_action('init', function () {
 			$type = 'art';
 			$labels = xcompile_post_type_labels('Art', 'Art');
-		
+			$supports = ['title', 'editor', 'revisions', 'page-attributes', 'thumbnail', 'custom-fields'];
+
+
 			$arguments = [
+				'supports' => $supports, // Apply supports
 				'public' => true,
 				'description' => 'Art posts.',
 				'menu_icon' => 'dashicons-admin-customizer', // Set icon
 				'labels'  => $labels
 			];
-			register_post_type( $type, $arguments);
+			register_post_type($type, $arguments);
 		});
+
+		add_filter( 'enter_title_here', function( $title ) {
+			$screen = get_current_screen();
+		
+			if  ( 'art' == $screen->post_type ) {
+				$title = 'Enter piece title here';
+			}
+		
+			return $title;
+		} );
+		add_filter( 'post_updated_messages', function($messages) {
+			global $post, $post_ID;
+			$link = esc_url( get_permalink($post_ID) );
+		
+			$messages['art'] = array(
+				0 => '',
+				1 => sprintf( __('Art post updated. <a href="%s">View art post</a>'), $link ),
+				2 => __('Custom field updated.'),
+				3 => __('Custom field deleted.'),
+				4 => __('Art post updated.'),
+				5 => isset($_GET['revision']) ? sprintf( __('Art post restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+				6 => sprintf( __('Art post published. <a href="%s">View art post</a>'), $link ),
+				7 => __('Art post saved.'),
+				8 => sprintf( __('Art post submitted. <a target="_blank" href="%s">Preview art post</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+				9 => sprintf( __('Art post scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview art post</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), $link ),
+				10 => sprintf( __('Art post draft updated. <a target="_blank" href="%s">Preview art post</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+			);
+			return $messages;
+		});
+		add_filter( 'bulk_post_updated_messages', function( $bulk_messages, $bulk_counts ) {
+			$bulk_messages['art'] = array(
+				'updated'   => _n( "%s art posts updated.", "%s studies updated.", $bulk_counts["updated"] ),
+				'locked'    => _n( "%s art posts not updated, somebody is editing it.", "%s studies not updated, somebody is editing them.", $bulk_counts["locked"] ),
+				'deleted'   => _n( "%s art posts permanently deleted.", "%s studies permanently deleted.", $bulk_counts["deleted"] ),
+				'trashed'   => _n( "%s art posts moved to the Trash.", "%s studies moved to the Trash.", $bulk_counts["trashed"] ),
+				'untrashed' => _n( "%s art posts restored from the Trash.", "%s studies restored from the Trash.", $bulk_counts["untrashed"] ),
+			);
+		
+			return $bulk_messages;
+		}, 10, 2 );
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
