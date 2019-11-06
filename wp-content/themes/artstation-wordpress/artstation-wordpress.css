@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Hind|Reenie+Beanie&display=swap');
+
+
+body {
+    background: #222222;
+    font-family: 'Hind', sans-serif;
+}
+
+.home {
+    background-image: url(home.webp);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-position: right;
+    background-size: cover;
+    z-index: -1;
+}
+
+nav {
+    background: #22222280;
+}
+
+.navbar-brand {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 36px;
+}
+
+footer.home-footer {
+    position: absolute;
+    bottom: 0;
+}
+
+footer {
+    background: #222222;
+    width: 100%;
+    padding: 2rem 3rem;
+}
+
+footer a img {
+    filter: invert(50%);
+    transition: all 0.3s;
+}
+
+footer a:hover img {
+    filter: invert(100%);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    letter-spacing: 0.5px;
+    margin-left: 1rem;
+}
+
+main img {
+    width: 100%;
+}
+
+main h1 {
+    color: #CCC;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 28px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+hr.divider {
+    width: 100px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    border: 0;
+    margin: 2rem 0;
+    margin-bottom: 5rem;
+}
+
+hr.divider::after {
+    border-bottom: 3px solid #00b6f0;
+    content: " ";
+    width: 69px;
+    display: block;
+    margin: auto;
+}
+
+.thumb-heading {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    background: #00000080;
+    width: 100%;
+    margin: 0;
+    padding: 15px 20px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #FFF;
+}
+
+.thumb-info {
+    position: relative;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.thumb:hover .thumb-info {
+    opacity: 1;
+}
+
+p {
+    color: #999;
+}
