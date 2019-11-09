@@ -17,21 +17,21 @@
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
-
+		echo '<hr class="divider">';
 		if ( 'post' === get_post_type() ) :
 			?>
-			<div class="entry-meta">
+			<!-- <div class="entry-meta text-center">
 				<?php
 				artstation_wordpress_posted_on();
 				artstation_wordpress_posted_by();
 				?>
-			</div><!-- .entry-meta -->
+			</div> -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
 	<?php artstation_wordpress_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content text-center">
 		<?php
 		the_content( sprintf(
 			wp_kses(
@@ -54,6 +54,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php artstation_wordpress_entry_footer(); ?>
+		<!-- <?php artstation_wordpress_entry_footer(); ?> -->
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
