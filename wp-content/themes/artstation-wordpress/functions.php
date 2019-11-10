@@ -50,6 +50,9 @@ if (!function_exists('artstation_wordpress_setup')) :
 
 
 			$arguments = [
+				'taxonomies' => array('category'), // And post tags
+				'rewrite' => array('slug' => 'art'), // Change the archive page URL
+				'has_archive' => true, // Enable archive page
 				'supports' => $supports, // Apply supports
 				'public' => true,
 				'description' => 'Art posts.',
