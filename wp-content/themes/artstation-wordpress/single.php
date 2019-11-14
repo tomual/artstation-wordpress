@@ -11,7 +11,6 @@ get_header();
 ?>
 <main class="container">
         <div class="row">
-            <div class="col-lg-12">
 				<?php
 				while ( have_posts() ) :
 					the_post();
@@ -27,7 +26,6 @@ get_header();
 
 				endwhile; // End of the loop.
 				?>
-            </div>
             <a href="list.html" class="btn btn-link text-light d-inline-block m-auto p-3">« Back to Concept Art</a>
         </div>
 
