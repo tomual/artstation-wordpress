@@ -11,7 +11,7 @@
  */
 
 ?>
-
+<?php wp_footer() ?>
 <footer class="">
 	<div class="container d-flex justify-content-between">
 		<div>
