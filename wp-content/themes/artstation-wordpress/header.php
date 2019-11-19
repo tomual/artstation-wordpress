@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for our theme
  *
@@ -12,8 +13,9 @@
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
+
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -25,30 +27,52 @@
 
 <body <?php body_class(); ?>>
 
-<header>
-	<nav class="navbar navbar-expand-lg navbar-dark py-4 px-5">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">soulant</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark py-4 px-5">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">soulant</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="list.html">Concept Art</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="list.html">3D Modeling</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="list.html">Projects</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="list.html">Contact</a>
-					</li>
-				</ul>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="list.html">Concept Art</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="list.html">3D Modeling</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="list.html">Projects</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="list.html">Contact</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</nav>
-</header>
+		</nav>
+	</header>
+
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark py-4 px-5">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">soulant</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<?php
+						wp_nav_menu(array(
+							'container' => null,
+							'items_wrap' => '%3$s',
+						));
+						?>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
