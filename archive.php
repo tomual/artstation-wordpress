@@ -15,15 +15,13 @@ get_header();
 	<div class="row">
 		<div class="col-lg-12">
 			<div id="primary" class="content-area">
-				<main id="main" class="site-main">
+				<main id="main" class="site-main row">
 
 					<?php if (have_posts()) : ?>
 
-						<header class="page-header">
 							<?php
-								the_archive_title('<h1 class="page-title">', '</h1>');
+								the_archive_title('<h1 class="page-title text-center w-100">', '</h1>');
 								?>
-						</header><!-- .page-header -->
 						<hr class="divider">
 					<?php
 						/* Start the Loop */
