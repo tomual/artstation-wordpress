@@ -15,12 +15,18 @@
 <footer class="">
 	<div class="container d-flex justify-content-between">
 		<div>
-			<a href=""><img class="mr-3" height="20" width="20" src="instagram.svg"></a>
-			<a href=""><img class="mr-3" height="20" width="20" src="artstation.svg"></a>
-			<a href=""><img class="mr-3" height="20" width="20" src="itch-dot-io.svg"></a>
+			<?php if (get_theme_mod('url_instagram')) : ?>
+				<a href="<?php echo get_theme_mod('url_instagram') ?>"><img class="mr-3" height="20" width="20" src="<?php echo get_template_directory_uri() ?>/img/instagram.svg"></a>
+			<?php endif ?>
+			<?php if (get_theme_mod('url_artstation')) : ?>
+				<a href="<?php echo get_theme_mod('url_artstation') ?>"><img class="mr-3" height="20" width="20" src="<?php echo get_template_directory_uri() ?>/img/artstation.svg"></a>
+			<?php endif ?>
+			<?php if (get_theme_mod('url_itch')) : ?>
+				<a href="<?php echo get_theme_mod('url_itch') ?>"><img class="mr-3" height="20" width="20" src="<?php echo get_template_directory_uri() ?>/img/itch-dot-io.svg"></a>
+			<?php endif ?>
 		</div>
 		<div>
-			<a class="text-muted text-decoration-none" href=""><img height="20" width="20" src="minutemailer.svg"> Contact Me</a>
+			<a class="text-muted text-decoration-none" href="<?php echo get_site_url() ?>/contact"><img height="20" width="20" src="<?php echo get_template_directory_uri() ?>/img/minutemailer.svg"> Contact Me</a>
 		</div>
 		<div class="small text-muted">
 			© 2019 soulant. All rights reserved.
