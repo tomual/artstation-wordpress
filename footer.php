@@ -12,7 +12,7 @@
 
 ?>
 <?php wp_footer() ?>
-<footer class="">
+<footer class="<?php echo is_front_page() ? 'home-footer' : '' ?>">
 	<div class="container d-flex justify-content-between">
 		<div>
 			<?php if (get_theme_mod('url_instagram')) : ?>

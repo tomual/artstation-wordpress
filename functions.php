@@ -8,85 +8,97 @@
  * @package ArtStation_Wordpress
  */
 
- /**********************************************************************
- *            Theme settings
- ********************************************************************/
 class Artstation_Wordpress_Customize {
     public static function register ( $wp_customize ) {
-        // Define a new section for the Appearance -> Customize page
+
+		// Setting for home background
+		$wp_customize->add_section( 'ts_home',
+            array(
+                'title'       => __( 'Home', 'artstation-wordpress' ),
+                'priority'    => 1,
+                'capability'  => 'edit_theme_options',
+                'description' => __('Set your social profile URLs.', 'artstation-wordpress'),
+            )
+		);
+        $wp_customize->add_setting( 'home_background_image',
+            array(
+                'default'    => '',
+                'type'       => 'theme_mod',
+                'capability' => 'edit_theme_options',
+                'transport'  => 'refresh',
+            )
+        );
+        $wp_customize->add_control( new WP_Customize_Image_Control(
+            $wp_customize,
+            'ts_home_background_image_control',
+            array(
+                'label'      => __( 'Upload an image', 'artstation-wordpress' ),
+                'settings'   => 'home_background_image',
+                'section'    => 'ts_home',
+            )
+        ) );
+		
+		// Settings for footer social links
         $wp_customize->add_section( 'ts_social_links',
             array(
                 'title'       => __( 'Social Links', 'artstation-wordpress' ),
-                'priority'    => 1, // Determines what order this appears in (1 = top)
-                'capability'  => 'edit_theme_options', // Capability needed to tweak
+                'priority'    => 1,
+                'capability'  => 'edit_theme_options',
                 'description' => __('Set your social profile URLs.', 'artstation-wordpress'),
             )
         );
- 
-        // 2.0 Register the new "url_instagram" setting
-        $wp_customize->add_setting( 'url_instagram', // id of the setting, no need to prefix when using 'theme_mod' as type
+        $wp_customize->add_setting( 'url_instagram',
             array(
-                'default'    => '', // Default setting/value to save
-                'type'       => 'theme_mod', // 'theme_mod' or 'option'. [print-theme-settings] only supports theme related settings (theme_mod)
-                'capability' => 'edit_theme_options', // Optional. Special permissions for accessing this setting.
-                'transport'  => 'refresh', // What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant).
+                'default'    => '',
+                'type'       => 'theme_mod',
+                'capability' => 'edit_theme_options',
+                'transport'  => 'refresh',
             )
         );
- 
-        // 2.1 Define an input for the "url_instagram" setting
         $wp_customize->add_control( new WP_Customize_Control(
             $wp_customize,
-            'ts_url_instagram_control', // unique ID for the control
+            'ts_url_instagram_control',
             array(
                 'label'      => __( 'Instagram URL', 'artstation-wordpress' ),
-                'settings'   => 'url_instagram', // id of previously created setting "url_instagram"
+                'settings'   => 'url_instagram',
                 'type'       => 'text',
-                'section'    => 'ts_social_links', // ID of our "Social Links" section
+                'section'    => 'ts_social_links',
             )
         ) );
- 
- 
-        // 2.0 Register the new "url_itch" setting
-        $wp_customize->add_setting( 'url_itch', // id of the setting, no need to prefix when using 'theme_mod' as type
+        $wp_customize->add_setting( 'url_itch',
             array(
-                'default'    => '', // Default setting/value to save
-                'type'       => 'theme_mod', // 'theme_mod' or 'option'. [print-theme-settings] only supports theme related settings (theme_mod)
-                'capability' => 'edit_theme_options', // Optional. Special permissions for accessing this setting.
-                'transport'  => 'refresh', // What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant).
+                'default'    => '',
+                'type'       => 'theme_mod',
+                'capability' => 'edit_theme_options',
+                'transport'  => 'refresh',
             )
         );
- 
-        // 2.1 Define an input for the "url_itch" setting
         $wp_customize->add_control( new WP_Customize_Control(
             $wp_customize,
-            'ts_url_itch_control', // unique ID for the control
+            'ts_url_itch_control',
             array(
                 'label'      => __( 'Itch.io URL', 'artstation-wordpress' ),
-                'settings'   => 'url_itch', // id of previously created setting "url_itch"
+                'settings'   => 'url_itch',
                 'type'       => 'text',
-                'section'    => 'ts_social_links', // ID of our "Social Links" section
+                'section'    => 'ts_social_links',
             )
         ) );
- 
-        // 2.0 Register the new "url_artstation" setting
-        $wp_customize->add_setting( 'url_artstation', // id of the setting, no need to prefix when using 'theme_mod' as type
+        $wp_customize->add_setting( 'url_artstation',
             array(
-                'default'    => '', // Default setting/value to save
-                'type'       => 'theme_mod', // 'theme_mod' or 'option'. [print-theme-settings] only supports theme related settings (theme_mod)
-                'capability' => 'edit_theme_options', // Optional. Special permissions for accessing this setting.
-                'transport'  => 'refresh', // What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant).
+                'default'    => '',
+                'type'       => 'theme_mod',
+                'capability' => 'edit_theme_options',
+                'transport'  => 'refresh',
             )
         );
- 
-        // 2.1 Define an input for the "url_artstation" setting
         $wp_customize->add_control( new WP_Customize_Control(
             $wp_customize,
-            'ts_url_artstation_control', // unique ID for the control
+            'ts_url_artstation_control',
             array(
                 'label'      => __( 'ArtStation URL', 'artstation-wordpress' ),
-                'settings'   => 'url_artstation', // id of previously created setting "url_artstation"
+                'settings'   => 'url_artstation',
                 'type'       => 'text',
-                'section'    => 'ts_social_links', // ID of our "Social Links" section
+                'section'    => 'ts_social_links',
             )
         ) );
     }
