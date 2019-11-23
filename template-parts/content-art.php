@@ -35,7 +35,7 @@
 		?>
 	</div><!-- .entry-content -->
 <?php else : ?>
-    <div class="col-lg-4">
+    <div class="col-lg-4 pb-4 art">
         <a class="thumb" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
             <?php the_post_thumbnail(); ?>
             <div class="thumb-info">

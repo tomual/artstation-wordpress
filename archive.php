@@ -18,10 +18,7 @@ get_header();
 				<main id="main" class="site-main row">
 
 					<?php if (have_posts()) : ?>
-
-							<?php
-								the_archive_title('<h1 class="page-title text-center w-100">', '</h1>');
-								?>
+						<h1 class="page-title text-center w-100"><?php single_term_title() ?></h1>
 						<hr class="divider">
 					<?php
 						/* Start the Loop */

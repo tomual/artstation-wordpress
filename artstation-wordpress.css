@@ -59,6 +59,12 @@ main img {
     height: auto;
 }
 
+.art img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)
+}
+
 main h1 {
     color: #CCC;
     text-transform: uppercase;
@@ -76,8 +82,8 @@ hr.divider {
     text-align: center;
     width: 100%;
     border: 0;
-    margin: 2rem 0;
     margin-bottom: 5rem;
+    margin-top: 0;
 }
 
 hr.divider::after {
@@ -113,4 +119,29 @@ hr.divider::after {
 
 p {
     color: #999;
+}
+
+.menu-item a {
+    color: rgba(255,255,255,.5);
+    letter-spacing: 0.5px;
+    margin-left: 1rem;
+        display: block;
+        padding: .5rem 1rem;
+}
+
+.menu-item a:focus, .menu-item a:hover {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+}
+
+.menu-item a {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+@media (min-width: 992px) {
+    .menu-item a {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
 }

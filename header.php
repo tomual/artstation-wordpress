@@ -37,34 +37,6 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="list.html">Concept Art</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="list.html">3D Modeling</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="list.html">Projects</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="list.html">Contact</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark py-4 px-5">
-			<div class="container">
-				<a class="navbar-brand" href="index.html">soulant</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto">
 						<?php
 						wp_nav_menu(array(
 							'container' => null,
