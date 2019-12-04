@@ -19,10 +19,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/artstation-wordpress.css">
 
 
 	<?php wp_head(); ?>
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/artstation-wordpress.css">
 </head>
 
 <body <?php body_class(); ?>>
