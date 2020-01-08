@@ -193,3 +193,8 @@ span.wpcf7-not-valid-tip {
 .wpcf7-not-valid {
     border: 2px solid #dc3545;
 }
+
+div.wpcf7-mail-sent-ok {
+    border: 2px solid #559830;
+    background: #5598303b;
+}

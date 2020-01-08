@@ -24,7 +24,8 @@ get_header();
 
 				endwhile; // End of the loop.
 				?>
-            <a href="list.html" class="btn btn-link text-light d-inline-block m-auto p-3">« Back to Concept Art</a>
+				<?php $categories = get_the_category() ?>
+            <a href="<?php echo get_category_link($categories[0]->term_id) ?>" class="btn btn-link text-light d-inline-block m-auto p-3">« Back to <?php echo $categories[0]->name ?? "Previous" ?></a>
         </div>
 
     </main>
